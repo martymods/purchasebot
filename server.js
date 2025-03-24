@@ -1,4 +1,3 @@
-// server.js
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -7,9 +6,8 @@ const { runBot } = require('./bot');
 const app = express();
 app.use(bodyParser.json());
 
-// Optional: Add a root route for testing
 app.get('/', (req, res) => {
-  res.send('Purchase Bot is running on Render ✅');
+  res.send('Purchase Bot is running ✅');
 });
 
 app.post('/webhook', async (req, res) => {
@@ -23,7 +21,6 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
-// ✅ FIX: Use the port provided by Render
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
