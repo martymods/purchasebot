@@ -6,12 +6,12 @@ const { runBot } = require('./bot');
 const app = express();
 app.use(bodyParser.json());
 
-// ✅ Add this route for browser access
+// ✅ Add this root route
 app.get('/', (req, res) => {
   res.send('✅ Purchase Bot is running on Render');
 });
 
-// ✅ This is your webhook endpoint
+// Webhook route
 app.post('/webhook', async (req, res) => {
   try {
     const data = req.body;
@@ -23,7 +23,7 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
-// ✅ Use Render-assigned port, not hardcoded
+// Listen on the correct port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
